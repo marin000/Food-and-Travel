@@ -1,4 +1,5 @@
-import { getClient, getEntries } from "../utils/contentful"
+import { getClient, getEntries } from "../utils/contentful";
+import { Button } from 'primereact/button';
 
 export async function getStaticProps() {
   
@@ -11,7 +12,7 @@ export default function Home({ result }) {
   console.log(result)
   return (
     <div>
-      
+      <Button label="Show"  />
     </div>
   )
 }
