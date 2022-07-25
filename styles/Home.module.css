@@ -43,11 +43,31 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+  position: relative;
+  grid-column: 1;
+  grid-row: 1;
+  z-index: 1;
 }
 
 .title,
 .description {
   text-align: center;
+  font-family: cursive;
+  font-weight: bold;
+
+}
+
+.titleImg {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.titleImgContainer {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 1fr;
+  width: 100%;
+  place-items: center;
 }
 
 .description {
@@ -108,9 +128,37 @@
   margin-left: 0.5rem;
 }
 
+
+@media (max-width: 900px) {
+  .title {
+    font-size: 3rem;
+  }
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
     flex-direction: column;
+  }
+  .title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .title {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 300px) {
+  .title {
+    font-size: 1rem;
   }
 }

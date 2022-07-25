@@ -25,7 +25,7 @@ export default function Navbar() {
 
   return (
     <div>
-      <div className="card">
+      <div className="navbar">
         <Menubar model={items} start={start} />
       </div>
     </div>
