@@ -128,6 +128,22 @@
   margin-left: 0.5rem;
 }
 
+.travelSplitter {
+  display: block !important;
+  text-align: center;
+}
+
+.travelTitle {
+  color: #ffe082;
+}
+
+.contact {
+  text-align: center;
+}
+
+.contactTitle {
+  color: #ffe082;
+}
 
 @media (max-width: 900px) {
   .title {

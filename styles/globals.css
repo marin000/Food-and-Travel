@@ -14,12 +14,19 @@ a {
 * {
   box-sizing: border-box;
 }
+.content {
+  display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+.childrenContent {
+  flex-grow: 1;
+}
 
 footer {
   display: block;
   text-align: center;
   padding: 30px 0;
-  margin-top: 60px;
   color: #777;
   border-top: 1px solid #eaeaea;
 }
@@ -28,15 +35,11 @@ footer {
 .dataview-demo .product-name {
   font-size: 1.5rem;
   font-weight: 700;
+  color: #ffe082;
 }
 
 .dataview-demo .product-description {
   margin: 0 0 1rem 0;
-}
-
-.dataview-demo .product-category {
-  font-weight: 600;
-  vertical-align: middle;
 }
 
 .dataview-demo .product-grid-item {
@@ -65,4 +68,5 @@ footer {
 .dataview-demo .product-grid-item .product-price {
   font-size: 1.5rem;
   font-weight: 600;
+  color: gold;
 }
