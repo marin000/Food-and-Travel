@@ -5,10 +5,12 @@ export default function Navbar() {
   const items = [
     {
       label: 'Home',
-      icon: 'pi pi-home'
+      icon: 'pi pi-home',
+      url: '/'
     },
     {
-      label: 'Menu'
+      label: 'Menu',
+      url: '/menu'
     },
     {
       label: 'Travel'

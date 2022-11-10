@@ -39,22 +39,24 @@ export default function Home({ home, menu }) {
   // menu items
   const itemTemplate = (menu) => {
 
-    const { title, description, price } = menu.fields;
+    const { title, description, price, onHome } = menu.fields;
     const image = menu.fields.image.fields.file;
-    return (
-      <div className="col-12 md:col-4">
-        <div className="product-grid-item card">
-          <div className="product-grid-item-content">
-            <img src={`https:${image.url}`} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={image.url} />
-            <div className="product-name">{title}</div>
-            <div className="product-description">{description}</div>
-          </div>
-          <div className="product-grid-item-bottom">
-            <span className="product-price">{price}</span>
+    if (onHome) {
+      return (
+        <div className="col-12 md:col-4">
+          <div className="product-grid-item card">
+            <div className="product-grid-item-content">
+              <img src={`https:${image.url}`} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={image.url} />
+              <div className="product-name">{title}</div>
+              <div className="product-description">{description}</div>
+            </div>
+            <div className="product-grid-item-bottom">
+              <span className="product-price">{price}</span>
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 
   return (
