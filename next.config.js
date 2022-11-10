@@ -15,6 +15,12 @@ module.exports = {
     menuPage: {
       title: 'Menu',
       menuButton: 'Download Menu'
+    },
+    travelPage: {
+      title: 'Travel with us'
+    },
+    slugPage: {
+      timeTitle: 'Itinerary'
     }
   }
 }

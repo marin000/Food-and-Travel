@@ -13,7 +13,8 @@ export default function Navbar() {
       url: '/menu'
     },
     {
-      label: 'Travel'
+      label: 'Travel',
+      url: '/travel'
     },
     {
       label: 'Gallery'

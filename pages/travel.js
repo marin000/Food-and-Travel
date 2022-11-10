@@ -1,17 +1,17 @@
 import { getClient } from "../utils/contentful";
-import Image from 'next/image';
 import { DataView } from 'primereact/dataview';
-import { Card } from 'primereact/card';
-import { Button } from 'primereact/button';
-import styles from '../styles/Menu.module.css';
-import getConfig from 'next/config';
-const { publicRuntimeConfig: { menuPage: { title, menuButton } } } = getConfig();
+import Link from 'next/link'
+import styles from '../styles/Travel.module.css';
+import Image from 'next/image';
+import getConfig from 'next/config'
+const { publicRuntimeConfig: { travelPage: { title } } } = getConfig();
 
 export async function getStaticProps() {
 
   const client = getClient()
-  const menu = await client.getEntries({ content_type: 'menu' });
-  if (!menu) {
+  const travel = await client.getEntries({ content_type: 'travel' });
+
+  if (!travel) {
     return {
       redirect: {
         destination: '/page404',
@@ -21,24 +21,32 @@ export async function getStaticProps() {
   }
   return {
     props: {
-      menu: menu.items
+      travel: travel.items
     },
     revalidate: 1
   }
 }
-export default function Menu({ menu }) {
-  const layout = 'grid';
-  const itemTemplate = (menu) => {
 
-    const { title, description, price } = menu.fields;
-    const image = menu.fields.image.fields.file;
+export default function Travel({ travel }) {
+
+  const layout = 'grid';
+
+  //travel items
+  const itemTemplate = (travel) => {
+
+    const { title, shortDescription, price, slug } = travel.fields;
+    const image = travel.fields.image.fields.file;
     return (
       <div className="col-12 md:col-4">
         <div className="product-grid-item card">
           <div className="product-grid-item-content">
-            <img src={`https:${image.url}`} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={image.url} />
-            <div className="product-name">{title}</div>
-            <div className="product-description">{description}</div>
+            <Link href={`/tours/${slug}`}>
+              <img src={`https:${image.url}`} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={image.url} />
+            </Link>
+            <Link href={`/tours/${slug}`}>
+              <div className="product-name">{title}</div>
+            </Link>
+            <div className="product-description">{shortDescription}</div>
           </div>
           <div className="product-grid-item-bottom">
             <span className="product-price">{price}</span>
@@ -56,21 +64,16 @@ export default function Menu({ menu }) {
         </div>
         <div className={styles.titleImg}>
           <Image
-            src="/../public/images/menuImg.jpeg"
+            src="/../public/images/travelImg.jpeg"
             alt="menu"
             width={'2000'}
             height={'800'}
           />
         </div>
       </div>
-      <Card className={styles.menuDownload}>
-        <a href="" download>
-          <Button label={menuButton} className="p-button-outlined p-button-warning" />
-        </a>
-      </Card>
       <div className="dataview-demo">
         <div className="card">
-          <DataView value={menu} layout={layout}
+          <DataView value={travel} layout={layout}
             itemTemplate={itemTemplate} rows={9} />
         </div>
       </div>
