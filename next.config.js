@@ -6,7 +6,8 @@ module.exports = {
     homePage: {
       toursButton: 'Visit all tours',
       contactText: 'Let us help create your memories',
-      contactButton: 'Contact us' 
+      contactButton: 'Contact us',
+      menuButton: 'Check out full menu'
     },
     notFoundPage: {
       title: '404 Page',

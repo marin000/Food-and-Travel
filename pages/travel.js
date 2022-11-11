@@ -41,10 +41,10 @@ export default function Travel({ travel }) {
         <div className="product-grid-item card">
           <div className="product-grid-item-content">
             <Link href={`/tours/${slug}`}>
-              <img src={`https:${image.url}`} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={image.url} />
+              <img src={`https:${image.url}`} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={image.url} style={{cursor: 'pointer'}} />
             </Link>
             <Link href={`/tours/${slug}`}>
-              <div className="product-name">{title}</div>
+              <div className="product-name" style={{cursor: 'pointer'}}>{title}</div>
             </Link>
             <div className="product-description">{shortDescription}</div>
           </div>
@@ -65,6 +65,8 @@ export default function Travel({ travel }) {
         <div className={styles.titleImg}>
           <Image
             src="/../public/images/travelImg.jpeg"
+            placeholder='blur'
+            blurDataURL="/../public/images/travelImg.jpeg"
             alt="menu"
             width={'2000'}
             height={'800'}

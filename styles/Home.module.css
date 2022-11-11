@@ -146,6 +146,10 @@
   color: #ffe082;
 }
 
+.menuButton {
+  text-align: center;
+}
+
 @media (max-width: 900px) {
   .title {
     font-size: 3rem;

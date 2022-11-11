@@ -3,10 +3,12 @@ import { DataView } from 'primereact/dataview';
 import { Button } from 'primereact/button';
 import { Card } from 'primereact/card';
 import { Splitter, SplitterPanel } from 'primereact/splitter';
+import Link from 'next/link'
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import getConfig from 'next/config'
-const { publicRuntimeConfig: { homePage: { toursButton, contactText, contactButton } } } = getConfig();
+import { Divider } from "primereact/divider";
+const { publicRuntimeConfig: { homePage: { toursButton, contactText, contactButton, menuButton } } } = getConfig();
 
 export async function getStaticProps() {
 
@@ -78,20 +80,30 @@ export default function Home({ home, menu }) {
         <div className="card">
           <DataView value={menu} layout={layout}
             itemTemplate={itemTemplate} rows={9} />
+          <Card className={styles.menuButton}>
+            <Link href={'/menu'}>
+              <Button label={menuButton} className="p-button-outlined p-button-warning p-button" />
+            </Link>
+          </Card>
         </div>
-      </div><br></br>
+      </div>
+      <Divider />
       <div className="card">
-        <Splitter style={{ height: '300px' }} className="mb-5">
+        <Splitter style={{ height: '300px' }}>
           <SplitterPanel className="flex align-items-center justify-content-center">
             <div className={styles.travelSplitter}>
               <h1 className={styles.travelTitle}>{homeData.travelTitle}</h1>
               <p>{homeData.travelDescription}</p>
-              <Button label={toursButton} className="p-button-outlined p-button-warning" />
+              <Link href={'/travel'}>
+                <Button label={toursButton} className="p-button-outlined p-button-warning" />
+              </Link>
             </div>
           </SplitterPanel>
           <SplitterPanel className="flex align-items-center justify-content-center">
             <Image
               src={`https:${travelImage.file.url}`}
+              placeholder='blur'
+              blurDataURL={`https:${travelImage.file.url}`}
               alt={travelImage.title}
               width={travelImage.file.details.image.width}
               height={'800px'}
@@ -99,6 +111,7 @@ export default function Home({ home, menu }) {
           </SplitterPanel>
         </Splitter>
       </div>
+      <Divider />
       <Card>
         <div className={styles.contact}>
           <h2 className={styles.contactTitle}>{contactText}</h2>

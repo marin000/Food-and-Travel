@@ -46,7 +46,6 @@ export async function getStaticProps({ params }) {
 }
 
 export default function TourDetails({ tour }) {
-  console.log(tour)
   if (!tour) {
     return (
       <div>
@@ -90,6 +89,8 @@ export default function TourDetails({ tour }) {
         <div className={styles.titleImg}>
           <Image
             src={`https:${titleImage.file.url}`}
+            placeholder='blur'
+            blurDataURL={`https:${titleImage.file.url}`}
             alt={titleImage.title}
             width={'2000'}
             height={'800'}
