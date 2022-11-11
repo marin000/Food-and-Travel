@@ -3,7 +3,7 @@ export const loadGoogleMaps = (callback) => {
 
   if (!existingScript) {
     const script = document.createElement('script');
-    script.src = 'https://maps.google.com/maps/api/js?key=AIzaSyBDts33rV2mEjhRWYoYTvk7_Du58JhaqNg';
+    script.src = 'https://maps.google.com/maps/api/js?key=key';
     script.id = 'googleMaps';
     script.async = true;
     script.defer = true;
