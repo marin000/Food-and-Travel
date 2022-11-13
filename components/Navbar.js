@@ -20,7 +20,8 @@ export default function Navbar() {
       label: 'Gallery'
     },
     {
-      label: 'Contact'
+      label: 'Contact',
+      url: '/contact'
     }
   ];
 
