@@ -57,7 +57,7 @@ export default function Travel({ travel }) {
   }
 
   return (
-    <div>
+    <div  className="childrenContent">
       <div className={styles.titleImgContainer}>
         <div className={styles.title}>
           {title}

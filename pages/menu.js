@@ -49,7 +49,7 @@ export default function Menu({ menu }) {
   }
 
   return (
-    <div>
+    <div  className="childrenContent">
       <div className={styles.titleImgContainer}>
         <div className={styles.title}>
           {title}

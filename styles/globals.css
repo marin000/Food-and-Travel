@@ -14,11 +14,13 @@ a {
 * {
   box-sizing: border-box;
 }
+
 .content {
   display: flex;
-    flex-direction: column;
-    height: 100vh;
+  flex-direction: column;
+  height: 100vh;
 }
+
 .childrenContent {
   flex-grow: 1;
 }
@@ -50,7 +52,7 @@ footer {
 }
 
 .dataview-demo .product-grid-item,
-  .dataview-demo .product-grid-item .product-grid-item-bottom {
+.dataview-demo .product-grid-item .product-grid-item-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -74,4 +76,31 @@ footer {
 
 .p-divider.p-divider-horizontal {
   margin: 0.5rem 0 !important;
+}
+
+/* FormDemo.css */
+
+.form-demo .card {
+  min-width: 450px;
+}
+
+.form-demo .card form {
+  margin-top: 2rem;
+}
+
+.form-demo .card .field {
+  margin-bottom: 1.5rem;
+}
+
+@media screen and (max-width: 960px) {
+  .form-demo .card {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .form-demo .card {
+    width: 100%;
+    min-width: 0;
+  }
 }

@@ -70,6 +70,8 @@ export default function Home({ home, menu }) {
         <div className={styles.titleImg}>
           <Image
             src={`https:${titleImage.file.url}`}
+            placeholder='blur'
+            blurDataURL={`https:${titleImage.file.url}`}
             alt={titleImage.title}
             width={titleImage.file.details.image.width}
             height={'900px'}
