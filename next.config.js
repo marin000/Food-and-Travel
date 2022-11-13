@@ -1,4 +1,15 @@
 module.exports = {
+  webpack5: true,
+  webpack: (config) => {
+    config.resolve.fallback = {
+      fs: false,
+      dns: false,
+      tls: false,
+      child_process: false,
+      net: false
+    };
+    return config;
+  },
   images: {
     domains: ['images.ctfassets.net']
   },
@@ -22,6 +33,15 @@ module.exports = {
     },
     slugPage: {
       timeTitle: 'Itinerary'
+    },
+    contactPage: {
+      title: 'Contact us',
+      formTitle: 'Let us know how we can help you',
+      contactTitle: 'Contact',
+      contactAddress: 'Address'
+    },
+    email: {
+      host: 'smtp.gmail.com'
     }
   }
 }

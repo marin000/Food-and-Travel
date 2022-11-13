@@ -6,7 +6,6 @@ import 'primeflex/primeflex.css';
 import 'primereact/resources/themes/bootstrap4-dark-blue/theme.css';
 import Layout from '../components/Layout';
 
-
 function MyApp({ Component, pageProps }) {
   return (
     <Layout>
