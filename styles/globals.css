@@ -56,6 +56,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: column;
 }
 
 .dataview-demo .product-grid-item img {
@@ -75,7 +76,7 @@ footer {
 }
 
 .p-divider.p-divider-horizontal {
-  margin: 0.5rem 0 !important;
+  margin: 0.3rem 0 !important;
 }
 
 /* FormDemo.css */

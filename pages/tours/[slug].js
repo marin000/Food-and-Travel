@@ -9,7 +9,7 @@ import styles from '../../styles/TravelSlug.module.css';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import getConfig from 'next/config'
 const { publicRuntimeConfig: { slugPage: { timeTitle } } } = getConfig();
-import { loadGoogleMaps, removeGoogleMaps } from '../../components/GoogleMaps';
+import { loadGoogleMaps, removeGoogleMaps } from '../../utils/GoogleMaps';
 import 'primeicons/primeicons.css';
 
 const client = getClient()

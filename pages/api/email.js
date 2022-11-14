@@ -5,6 +5,7 @@ const { publicRuntimeConfig: { email: { host } } } = getConfig();
 export default function handler(req, res) {
   const { name, email, subject, message } = req.body;
   const fullSubject = `${name}: ${subject}`;
+  const fullText = `${message}\nSent from email: ${email}`;
 
   const client = new SMTPClient({
     user: process.env.NEXT_PUBLIC_MAIL_USER,
@@ -16,7 +17,7 @@ export default function handler(req, res) {
   try {
     client.send(
       {
-        text: message,
+        text: fullText,
         from: email,
         to: process.env.NEXT_PUBLIC_MAIL_USER,
         subject: fullSubject,

@@ -76,7 +76,7 @@ export default function Contact({ contact }) {
       .then(
         (res) => {
           setShowMessage(true);
-          console.log('Email sent')
+          console.log('Email sent');
         }
       ).catch(
         (e) => console.log(e)
