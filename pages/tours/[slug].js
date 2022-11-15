@@ -10,6 +10,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import getConfig from 'next/config'
 const { publicRuntimeConfig: { slugPage: { timeTitle } } } = getConfig();
 import { loadGoogleMaps, removeGoogleMaps } from '../../utils/GoogleMaps';
+import { Galleria } from 'primereact/galleria';
 import 'primeicons/primeicons.css';
 
 const client = getClient()
@@ -53,14 +54,30 @@ export default function TourDetails({ tour }) {
       </div>
     )
   }
+  // console.log(tour)
   const [googleMapsReady, setGoogleMapsReady] = useState(false);
   const [overlays, setOverlays] = useState(null);
-  const { title, fullDescription, timetable, price, map } = tour.fields;
+  const { title, fullDescription, timetable, price, map, gallery } = tour.fields;
   const titleImage = tour.fields.image.fields;
   const options = {
     center: { lat: map.lat, lng: map.lon },
     zoom: 12
   };
+
+  const responsiveOptions = [
+    {
+      breakpoint: '1024px',
+      numVisible: 5
+    },
+    {
+      breakpoint: '768px',
+      numVisible: 3
+    },
+    {
+      breakpoint: '560px',
+      numVisible: 1
+    }
+  ];
 
   useEffect(() => {
     loadGoogleMaps(() => {
@@ -78,6 +95,16 @@ export default function TourDetails({ tour }) {
         new google.maps.Marker({ position: { lat: map.lat, lng: map.lon }, title: title })
       ]
     );
+  }
+
+  const itemTemplate = (item) => {
+    let img = item.fields;
+    return <img src={img.file.url} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={img.title} style={{ width: '100%', display: 'block' }} />;
+  }
+
+  const thumbnailTemplate = (item) => {
+    let img = item.fields;
+    return <img src={img.file.url} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={img.title} style={{ display: 'block', width: '20vw', objectFit: 'contain' }} />;
   }
 
   return (
@@ -111,6 +138,12 @@ export default function TourDetails({ tour }) {
         </div>
         {documentToReactComponents(timetable)}
       </Card>
+      <Divider />
+      <div className="card">
+        <Galleria value={gallery} responsiveOptions={responsiveOptions} numVisible={5} style={{ maxWidth: '90vw', marginLeft: 'auto', marginRight: 'auto' }}
+          item={itemTemplate} thumbnail={thumbnailTemplate} circular autoPlay transitionInterval={2000} />
+      </div>
+
       <Divider />
       {
         googleMapsReady && (
