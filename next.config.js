@@ -42,6 +42,9 @@ module.exports = {
     },
     email: {
       host: 'smtp.gmail.com'
+    },
+    gallery: {
+      title: 'Check our gallery'
     }
   }
 }

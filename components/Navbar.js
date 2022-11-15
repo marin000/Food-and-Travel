@@ -17,7 +17,8 @@ export default function Navbar() {
       url: '/travel'
     },
     {
-      label: 'Gallery'
+      label: 'Gallery',
+      url: '/gallery'
     },
     {
       label: 'Contact',
