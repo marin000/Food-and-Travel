@@ -45,6 +45,9 @@ module.exports = {
     },
     gallery: {
       title: 'Check our gallery'
+    },
+    footer: {
+      title: 'Food and travel'
     }
   }
 }

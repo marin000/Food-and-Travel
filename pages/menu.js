@@ -11,7 +11,9 @@ export async function getStaticProps() {
 
   const client = getClient()
   const menu = await client.getEntries({ content_type: 'menu' });
-  if (!menu) {
+  const contact = await client.getEntries({ content_type: 'contact' });
+
+  if (!menu || !contact) {
     return {
       redirect: {
         destination: '/page404',
@@ -21,12 +23,13 @@ export async function getStaticProps() {
   }
   return {
     props: {
-      menu: menu.items
+      menu: menu.items,
+      contact: contact.items[0]
     },
     revalidate: 1
   }
 }
-export default function Menu({ menu }) {
+export default function Menu({ menu, contact }) {
   const layout = 'grid';
   const itemTemplate = (menu) => {
 

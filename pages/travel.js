@@ -10,8 +10,9 @@ export async function getStaticProps() {
 
   const client = getClient()
   const travel = await client.getEntries({ content_type: 'travel' });
+  const contact = await client.getEntries({ content_type: 'contact' });
 
-  if (!travel) {
+  if (!travel || !contact) {
     return {
       redirect: {
         destination: '/page404',
@@ -21,13 +22,14 @@ export async function getStaticProps() {
   }
   return {
     props: {
-      travel: travel.items
+      travel: travel.items,
+      contact: contact.items[0]
     },
     revalidate: 1
   }
 }
 
-export default function Travel({ travel }) {
+export default function Travel({ travel, contact }) {
 
   const layout = 'grid';
 

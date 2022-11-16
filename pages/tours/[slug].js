@@ -30,8 +30,9 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
   const { items } = await client.getEntries({ content_type: 'travel', 'fields.slug': params.slug })
+  const contact = await client.getEntries({ content_type: 'contact' });
 
-  if (!items.length) {
+  if (!items.length || !contact) {
     return {
       redirect: {
         destination: '/page404',
@@ -41,12 +42,15 @@ export async function getStaticProps({ params }) {
   }
 
   return {
-    props: { tour: items[0] },
+    props: { 
+      tour: items[0],
+      contact: contact.items[0]
+    },
     revalidate: 1
   }
 }
 
-export default function TourDetails({ tour }) {
+export default function TourDetails({ tour,contact }) {
   if (!tour) {
     return (
       <div>

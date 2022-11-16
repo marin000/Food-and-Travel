@@ -1,0 +1,18 @@
+.footerContainer {
+  text-align: center;
+}
+
+.footerTitle {
+  color: #ffe082;
+}
+
+.footerText {
+  color: white;
+}
+
+.footerCopyright {
+  color: white;
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: -1rem;
+}

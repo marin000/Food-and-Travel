@@ -15,8 +15,9 @@ export async function getStaticProps() {
   const client = getClient()
   const home = await client.getEntries({ content_type: 'homePage' });
   const menu = await client.getEntries({ content_type: 'menu' });
+  const contact = await client.getEntries({ content_type: 'contact' });
 
-  if (!home || !menu) {
+  if (!home || !menu || !contact) {
     return {
       redirect: {
         destination: '/page404',
@@ -27,12 +28,13 @@ export async function getStaticProps() {
   return {
     props: {
       home: home.items[0],
-      menu: menu.items
+      menu: menu.items,
+      contact: contact.items[0]
     },
     revalidate: 1
   }
 }
-export default function Home({ home, menu }) {
+export default function Home({ home, menu, contact }) {
   const homeData = home.fields;
   const titleImage = homeData.titleImage.fields;
   const travelImage = homeData.travelImage.fields;
@@ -117,7 +119,9 @@ export default function Home({ home, menu }) {
       <Card>
         <div className={styles.contact}>
           <h2 className={styles.contactTitle}>{contactText}</h2>
-          <Button label={contactButton} className="p-button-outlined p-button-warning" />
+          <Link href={'/contact'}>
+            <Button label={contactButton} className="p-button-outlined p-button-warning" />
+          </Link>
         </div>
       </Card>
     </div>

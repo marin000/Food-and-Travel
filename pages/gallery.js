@@ -10,8 +10,9 @@ export async function getStaticProps() {
 
   const client = getClient()
   const images = await client.getEntries({ content_type: 'gallery' });
+  const contact = await client.getEntries({ content_type: 'contact' });
 
-  if (!images) {
+  if (!images || !contact) {
     return {
       redirect: {
         destination: '/page404',
@@ -21,12 +22,13 @@ export async function getStaticProps() {
   }
   return {
     props: {
-      images: images.items
+      images: images.items, 
+      contact: contact.items[0]
     },
     revalidate: 1
   }
 }
-export default function Gallery({ images }) {
+export default function Gallery({ images, contact }) {
 
   const galleria = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
