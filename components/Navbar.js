@@ -1,4 +1,6 @@
 import { Menubar } from 'primereact/menubar';
+import Image from 'next/image';
+import Link from 'next/link'
 
 export default function Navbar() {
 
@@ -26,7 +28,15 @@ export default function Navbar() {
     }
   ];
 
-  const start = <img alt="logo" src="showcase/images/logo.png" onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} height="40" className="mr-2"></img>;
+  const start = <Link href={'/'} >
+    <Image
+      src="/../public/logo.png"
+      alt='logo'
+      width={'40'}
+      height={'40'}
+      style={{ cursor: 'pointer'}}
+    />
+  </Link>;
 
   return (
     <div>
