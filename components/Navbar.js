@@ -29,13 +29,15 @@ export default function Navbar() {
   ];
 
   const start = <Link href={'/'} >
-    <Image
-      src="/../public/logo.png"
-      alt='logo'
-      width={'40'}
-      height={'40'}
-      style={{ cursor: 'pointer'}}
-    />
+    <a>
+      <Image
+        src="/../public/logo.png"
+        alt='logo'
+        width={'40'}
+        height={'40'}
+        style={{ cursor: 'pointer' }}
+      />
+    </a>
   </Link>;
 
   return (
