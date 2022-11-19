@@ -4,11 +4,13 @@ import { Card } from 'primereact/card';
 import { ProgressBar } from 'primereact/progressbar';
 import { Divider } from 'primereact/divider';
 import { GMap } from 'primereact/gmap';
+import { Button } from 'primereact/button';
 import Image from 'next/image';
+import Link from 'next/link'
 import styles from '../../styles/TravelSlug.module.css';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import getConfig from 'next/config'
-const { publicRuntimeConfig: { slugPage: { timeTitle } } } = getConfig();
+const { publicRuntimeConfig: { slugPage: { timeTitle, bookButton } } } = getConfig();
 import { loadGoogleMaps, removeGoogleMaps } from '../../utils/GoogleMaps';
 import { Galleria } from 'primereact/galleria';
 import 'primeicons/primeicons.css';
@@ -42,7 +44,7 @@ export async function getStaticProps({ params }) {
   }
 
   return {
-    props: { 
+    props: {
       tour: items[0],
       contact: contact.items[0]
     },
@@ -50,7 +52,7 @@ export async function getStaticProps({ params }) {
   }
 }
 
-export default function TourDetails({ tour,contact }) {
+export default function TourDetails({ tour, contact }) {
   if (!tour) {
     return (
       <div>
@@ -58,7 +60,7 @@ export default function TourDetails({ tour,contact }) {
       </div>
     )
   }
-  // console.log(tour)
+
   const [googleMapsReady, setGoogleMapsReady] = useState(false);
   const [overlays, setOverlays] = useState(null);
   const { title, fullDescription, timetable, price, map, gallery } = tour.fields;
@@ -129,8 +131,15 @@ export default function TourDetails({ tour,contact }) {
         </div>
       </div>
       <Card>
-        <i className="pi pi-dollar" style={{ 'fontSize': '1.1em', 'marginLeft': '1rem', 'marginBottom': '0.2rem' }}></i>
-        <div className={styles.tourPrice}>{price}</div>
+        <div className={styles.priceBooking}>
+          <i className="pi pi-dollar" style={{ 'fontSize': '1.1em', 'marginLeft': '1rem', 'marginBottom': '0.2rem' }}></i>
+          <div className={styles.tourPrice}>{price}</div>
+          <div className={styles.booking}>
+            <Link href={{ pathname: '/booking', query: { name: title } }}>
+              <Button label={bookButton} className="p-button-outlined p-button-warning p-button-sm" />
+            </Link>
+          </div>
+        </div>
         <h2 className={styles.header}>{title}</h2>
         {documentToReactComponents(fullDescription)}
       </Card>

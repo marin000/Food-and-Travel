@@ -32,7 +32,8 @@ module.exports = {
       title: 'Travel with us'
     },
     slugPage: {
-      timeTitle: 'Itinerary'
+      timeTitle: 'Itinerary',
+      bookButton: 'Book this tour'
     },
     contactPage: {
       title: 'Contact us',
@@ -48,6 +49,17 @@ module.exports = {
     },
     footer: {
       title: 'Food and travel'
+    },
+    booking: {
+      button: 'Book a tour'
+    },
+    emailBooking: {
+      dateText: 'Date of birth:',
+      adultsText: 'Number of adults:',
+      childrenText: 'Number of children:',
+      emailText: 'Contact email:',
+      clientSubjectText: 'Food and Travel:',
+      clientMessage: 'Thank you for your interest in this tour. You will be informed about the details and the exact date later.'
     }
   }
 }
