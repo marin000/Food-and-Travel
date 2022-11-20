@@ -7,6 +7,10 @@ import 'primeicons/primeicons.css';
 
 export default function Footer({ props }) {
 
+  if (!props.contact) {
+    return null;
+  }
+
   const { email, telephone, address } = props.contact.fields;
 
   return (

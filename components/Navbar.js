@@ -1,8 +1,11 @@
 import { Menubar } from 'primereact/menubar';
 import Image from 'next/image';
 import Link from 'next/link'
+import { useSession } from "next-auth/react";
 
 export default function Navbar() {
+
+  const { data: session } = useSession()
 
   const items = [
     {
@@ -25,6 +28,15 @@ export default function Navbar() {
     {
       label: 'Contact',
       url: '/contact'
+    },
+    {
+      label: session ? 'CMS' : '',
+      url: '/cms/home'
+    },
+    {
+      label: session ? 'Sign Out' : '',
+      icon: session? 'pi pi-sign-out' : '',
+      url: '/api/auth/signout'
     }
   ];
 
