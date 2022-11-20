@@ -10,11 +10,11 @@ import { classNames } from 'primereact/utils';
 import { Card } from "primereact/card";
 import { Calendar } from 'primereact/calendar';
 import { InputNumber } from 'primereact/inputnumber';
-import axios from 'axios'
 import styles from '../styles/Booking.module.css';
 import getConfig from 'next/config'
 const { publicRuntimeConfig: { booking: { button } } } = getConfig();
-import { format } from 'date-fns'
+import { format } from 'date-fns';
+import { sendBookingEmail, sendBookingEmailToClient } from '../utils/email'
 
 export async function getStaticProps() {
 
@@ -45,26 +45,6 @@ export default function Booking({ contact }) {
   const [formData, setFormData] = useState({});
   const [adultsNum, setAdultsNum] = useState(0);
   const [childrenNum, setChildrenNum] = useState(0);
-
-  const sendMail = async (formData) => {
-    const data = {
-      fullName: `${formData.firstName} ${formData.lastName}`,
-      email: formData.email,
-      dateOfBirth: format(formData.dateOfBirth, 'dd/MM/yyyy'),
-      adultsNum, 
-      childrenNum,
-      tour
-    };
-    axios.post('http://localhost:3000/api/emailBooking', data)
-      .then(
-        (res) => {
-          setShowMessage(true);
-          console.log('Email sent');
-        }
-      ).catch(
-        (e) => console.log(e)
-      )
-  }
 
   const formik = useFormik({
     initialValues: {
@@ -100,10 +80,20 @@ export default function Booking({ contact }) {
     },
     onSubmit: (data) => {
       setFormData(data);
+      const emailData = {
+        fullName: `${data.firstName} ${data.lastName}`,
+        email: data.email,
+        dateOfBirth: format(data.dateOfBirth, 'dd/MM/yyyy'),
+        adultsNum,
+        childrenNum,
+        tour
+      };
+      const emailDataClient = { tour, email: data.email };
+      sendBookingEmail(emailData);
+      sendBookingEmailToClient(emailDataClient)
       formik.resetForm();
       setAdultsNum(0);
       setChildrenNum(0);
-      sendMail(data);
     }
   });
 
