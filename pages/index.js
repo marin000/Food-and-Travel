@@ -76,7 +76,7 @@ export default function Home({ home, menu, contact }) {
             blurDataURL={`https:${titleImage.file.url}`}
             alt={titleImage.title}
             width={titleImage.file.details.image.width}
-            height={'900px'}
+            height={'1600px'}
           />
         </div>
       </div>
@@ -110,7 +110,7 @@ export default function Home({ home, menu, contact }) {
               blurDataURL={`https:${travelImage.file.url}`}
               alt={travelImage.title}
               width={travelImage.file.details.image.width}
-              height={'800px'}
+              height={'1900px'}
             />
           </SplitterPanel>
         </Splitter>

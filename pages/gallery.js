@@ -66,9 +66,9 @@ export default function Gallery({ images, contact }) {
         </div>
         <div className={styles.titleImg}>
           <Image
-            src="/../public/images/galleryImg.jpeg"
+            src="/../public/images/galleryImg.jpg"
             placeholder='blur'
-            blurDataURL="/../public/images/galleryImg.jpeg"
+            blurDataURL="/../public/images/galleryImg.jpg"
             alt="gallery"
             width={'2000'}
             height={'800'}

@@ -66,9 +66,9 @@ export default function Travel({ travel, contact }) {
         </div>
         <div className={styles.titleImg}>
           <Image
-            src="/../public/images/travelImg.jpeg"
+            src="/../public/images/travelImg.jpg"
             placeholder='blur'
-            blurDataURL="/../public/images/travelImg.jpeg"
+            blurDataURL="/../public/images/travelImg.jpg"
             alt="menu"
             width={'2000'}
             height={'800'}

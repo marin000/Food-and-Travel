@@ -59,9 +59,9 @@ export default function Menu({ menu, contact }) {
         </div>
         <div className={styles.titleImg}>
           <Image
-            src="/../public/images/menuImg.jpeg"
+            src="/../public/images/menuImg.jpg"
             placeholder='blur'
-            blurDataURL="/../public/images/menuImg.jpeg"
+            blurDataURL="/../public/images/menuImg.jpg"
             alt="menu"
             width={'2000'}
             height={'800'}

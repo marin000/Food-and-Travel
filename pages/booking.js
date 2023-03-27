@@ -108,9 +108,9 @@ export default function Booking({ contact }) {
       <div className={styles.titleImgContainer}>
         <div className={styles.titleImg}>
           <Image
-            src="/../public/images/booking.avif"
+            src="/../public/images/booking.jpg"
             placeholder='blur'
-            blurDataURL="/../public/images/booking.avif"
+            blurDataURL="/../public/images/booking.jpg"
             alt="booking"
             width={'2000'}
             height={'800'}
