@@ -53,23 +53,16 @@ export async function getStaticProps({ params }) {
 }
 
 export default function TourDetails({ tour, contact }) {
-  if (!tour) {
-    return (
-      <div>
-        <ProgressBar mode="indeterminate" style={{ height: '6px' }}></ProgressBar>
-      </div>
-    )
-  }
 
   const [googleMapsReady, setGoogleMapsReady] = useState(false);
   const [overlays, setOverlays] = useState(null);
-  const { title, fullDescription, timetable, price, map, gallery } = tour.fields;
-  const titleImage = tour.fields.image.fields;
+  const { title, fullDescription, timetable, price, map, gallery } = tour?.fields || {};
+  const titleImage = tour?.fields?.image?.fields || '';
   const options = {
-    center: { lat: map.lat, lng: map.lon },
+    center: { lat: map?.lat || '', lng: map?.lon || '' },
     zoom: 12
   };
-
+  
   const responsiveOptions = [
     {
       breakpoint: '1024px',
@@ -84,12 +77,19 @@ export default function TourDetails({ tour, contact }) {
       numVisible: 1
     }
   ];
-
+  
   useEffect(() => {
     loadGoogleMaps(() => {
       setGoogleMapsReady(true);
     });
-
+    
+    if (!tour) {
+      return (
+        <div>
+          <ProgressBar mode="indeterminate" style={{ height: '6px' }}></ProgressBar>
+        </div>
+      )
+    }
     return () => {
       removeGoogleMaps();
     }
@@ -105,12 +105,12 @@ export default function TourDetails({ tour, contact }) {
 
   const itemTemplate = (item) => {
     let img = item.fields;
-    return <img src={img.file.url} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={img.title} style={{ width: '100%', display: 'block' }} />;
+    return <img src={img?.file?.url} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={img.title} style={{ width: '100%', display: 'block' }} />;
   }
 
   const thumbnailTemplate = (item) => {
     let img = item.fields;
-    return <img src={img.file.url} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={img.title} style={{ display: 'block', width: '20vw', objectFit: 'contain' }} />;
+    return <img src={img?.file?.url} onError={(e) => e.target.src = 'https://www.primefaces.org/wp-content/uploads/2020/05/placeholder.png'} alt={img.title} style={{ display: 'block', width: '20vw', objectFit: 'contain' }} />;
   }
 
   return (
@@ -121,9 +121,9 @@ export default function TourDetails({ tour, contact }) {
         </div>
         <div className={styles.titleImg}>
           <Image
-            src={`https:${titleImage.file.url}`}
+            src={`https:${titleImage?.file?.url}`}
             placeholder='blur'
-            blurDataURL={`https:${titleImage.file.url}`}
+            blurDataURL={`https:${titleImage?.file?.url}`}
             alt={titleImage.title}
             width={'2000'}
             height={'800'}
