@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link'
 
 export default function Navbar() {
+  const logoImg = `${process.env.NEXT_PUBLIC_IMG_PREFIX}/logo.png`;
 
   const items = [
     {
@@ -31,7 +32,7 @@ export default function Navbar() {
   const start = <Link href={'/'} >
     <a>
       <Image
-        src="/../public/logo.png"
+        src={logoImg}
         alt='logo'
         width={'40'}
         height={'40'}
