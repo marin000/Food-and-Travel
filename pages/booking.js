@@ -45,6 +45,7 @@ export default function Booking({ contact }) {
   const [formData, setFormData] = useState({});
   const [adultsNum, setAdultsNum] = useState(0);
   const [childrenNum, setChildrenNum] = useState(0);
+  const titleImage = `/..${process.env.NEXT_PUBLIC_IMG_PREFIX}/images/booking.jpg`;
 
   const formik = useFormik({
     initialValues: {
@@ -108,9 +109,9 @@ export default function Booking({ contact }) {
       <div className={styles.titleImgContainer}>
         <div className={styles.titleImg}>
           <Image
-            src="/../public/images/booking.jpg"
+            src={titleImage}
             placeholder='blur'
-            blurDataURL="/../public/images/booking.jpg"
+            blurDataURL={titleImage}
             alt="booking"
             width={'2000'}
             height={'800'}

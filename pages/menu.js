@@ -31,6 +31,8 @@ export async function getStaticProps() {
 }
 export default function Menu({ menu, contact }) {
   const layout = 'grid';
+  const titleImage = `/..${process.env.NEXT_PUBLIC_IMG_PREFIX}/images/menuImg.jpg`;
+  console.log(titleImage);
   const itemTemplate = (menu) => {
 
     const { title, description, price } = menu.fields;
@@ -59,9 +61,9 @@ export default function Menu({ menu, contact }) {
         </div>
         <div className={styles.titleImg}>
           <Image
-            src="/../public/images/menuImg.jpg"
+            src={titleImage}
             placeholder='blur'
-            blurDataURL="/../public/images/menuImg.jpg"
+            blurDataURL={titleImage}
             alt="menu"
             width={'2000'}
             height={'800'}

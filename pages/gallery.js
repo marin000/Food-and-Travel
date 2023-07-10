@@ -32,6 +32,7 @@ export default function Gallery({ images, contact }) {
 
   const galleria = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const titleImage = `/..${process.env.NEXT_PUBLIC_IMG_PREFIX}/images/galleryImg.jpg`;
 
   const responsiveOptions = [
     {
@@ -66,9 +67,9 @@ export default function Gallery({ images, contact }) {
         </div>
         <div className={styles.titleImg}>
           <Image
-            src="/../public/images/galleryImg.jpg"
+            src={titleImage}
             placeholder='blur'
-            blurDataURL="/../public/images/galleryImg.jpg"
+            blurDataURL={titleImage}
             alt="gallery"
             width={'2000'}
             height={'800'}

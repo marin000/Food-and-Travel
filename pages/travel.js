@@ -32,6 +32,7 @@ export async function getStaticProps() {
 export default function Travel({ travel, contact }) {
 
   const layout = 'grid';
+  const titleImage = `/..${process.env.NEXT_PUBLIC_IMG_PREFIX}/images/travelImg.jpg`;
 
   //travel items
   const itemTemplate = (travel) => {
@@ -66,9 +67,9 @@ export default function Travel({ travel, contact }) {
         </div>
         <div className={styles.titleImg}>
           <Image
-            src="/../public/images/travelImg.jpg"
+            src={titleImage}
             placeholder='blur'
-            blurDataURL="/../public/images/travelImg.jpg"
+            blurDataURL={titleImage}
             alt="menu"
             width={'2000'}
             height={'800'}
