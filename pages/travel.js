@@ -32,7 +32,7 @@ export async function getStaticProps() {
 export default function Travel({ travel, contact }) {
 
   const layout = 'grid';
-  const titleImage = `/..${process.env.NEXT_PUBLIC_IMG_PREFIX}/images/travelImg.jpg`;
+  const titleImage = `${process.env.NEXT_PUBLIC_IMG_PREFIX}/images/travelImg.jpg`;
 
   //travel items
   const itemTemplate = (travel) => {

@@ -45,7 +45,7 @@ export default function Booking({ contact }) {
   const [formData, setFormData] = useState({});
   const [adultsNum, setAdultsNum] = useState(0);
   const [childrenNum, setChildrenNum] = useState(0);
-  const titleImage = `/..${process.env.NEXT_PUBLIC_IMG_PREFIX}/images/booking.jpg`;
+  const titleImage = `${process.env.NEXT_PUBLIC_IMG_PREFIX}/images/booking.jpg`;
 
   const formik = useFormik({
     initialValues: {

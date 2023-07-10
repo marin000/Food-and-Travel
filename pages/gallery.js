@@ -32,7 +32,7 @@ export default function Gallery({ images, contact }) {
 
   const galleria = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
-  const titleImage = `/..${process.env.NEXT_PUBLIC_IMG_PREFIX}/images/galleryImg.jpg`;
+  const titleImage = `${process.env.NEXT_PUBLIC_IMG_PREFIX}/images/galleryImg.jpg`;
 
   const responsiveOptions = [
     {
