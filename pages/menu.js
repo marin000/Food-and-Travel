@@ -31,7 +31,7 @@ export async function getStaticProps() {
 }
 export default function Menu({ menu, contact }) {
   const layout = 'grid';
-  const titleImage = `/..${process.env.NEXT_PUBLIC_IMG_PREFIX}/images/menuImg.jpg`;
+  const titleImage = `${process.env.NEXT_PUBLIC_IMG_PREFIX}/images/menuImg.jpg`;
   console.log(titleImage);
   const itemTemplate = (menu) => {
 
